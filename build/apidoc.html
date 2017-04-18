@@ -1,0 +1,1760 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/assaf/node-replay#readme"
+
+    >replay (v2.1.2)</a>
+</h1>
+<h4>When API testing slows you down: record and replay HTTP responses like a boss</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay">module replay</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay._events.error">
+            function <span class="apidocSignatureSpan">replay.</span>_events.error
+            <span class="apidocSignatureSpan">(error)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.chain.first">
+            function <span class="apidocSignatureSpan">replay.</span>chain.first
+            <span class="apidocSignatureSpan">(request, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.chain.last">
+            function <span class="apidocSignatureSpan">replay.</span>chain.last
+            <span class="apidocSignatureSpan">(request, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.debug">
+            function <span class="apidocSignatureSpan">replay.</span>debug
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.logger">
+            function <span class="apidocSignatureSpan">replay.</span>logger
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.matcher">
+            function <span class="apidocSignatureSpan">replay.</span>matcher
+            <span class="apidocSignatureSpan">(request, response)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.pass_through">
+            function <span class="apidocSignatureSpan">replay.</span>pass_through
+            <span class="apidocSignatureSpan">(passThroughFunction)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.proxy">
+            function <span class="apidocSignatureSpan">replay.</span>proxy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.recorder">
+            function <span class="apidocSignatureSpan">replay.</span>recorder
+            <span class="apidocSignatureSpan">(settings)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">replay.</span>_eventsCount</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.</span>_dropped</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.</span>_events</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.</span>_localhosts</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.</span>_passThrough</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.</span>catalog</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.</span>chain</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.</span>domain</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.</span>headers</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">replay.</span>mode</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay._events">module replay._events</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay._events.error">
+            function <span class="apidocSignatureSpan">replay._events.</span>error
+            <span class="apidocSignatureSpan">(error)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay._events.error">module replay._events.error</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay._events.error.error">
+            function <span class="apidocSignatureSpan">replay._events.</span>error
+            <span class="apidocSignatureSpan">(error)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.catalog">module replay.catalog</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.catalog.catalog">
+            function <span class="apidocSignatureSpan">replay.</span>catalog
+            <span class="apidocSignatureSpan">(settings)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.chain">module replay.chain</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.chain.first">
+            function <span class="apidocSignatureSpan">replay.chain.</span>first
+            <span class="apidocSignatureSpan">(request, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.chain.last">
+            function <span class="apidocSignatureSpan">replay.chain.</span>last
+            <span class="apidocSignatureSpan">(request, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.chain.first">module replay.chain.first</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.chain.first.first">
+            function <span class="apidocSignatureSpan">replay.chain.</span>first
+            <span class="apidocSignatureSpan">(request, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.chain.first.next">
+            function <span class="apidocSignatureSpan">replay.chain.first.</span>next
+            <span class="apidocSignatureSpan">(request, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.chain.last">module replay.chain.last</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.chain.last.last">
+            function <span class="apidocSignatureSpan">replay.chain.</span>last
+            <span class="apidocSignatureSpan">(request, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.chain.last.</span>next</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.debug">module replay.debug</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">replay.debug.</span>enabled</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">replay.debug.</span>useColors</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.debug.debug">
+            function <span class="apidocSignatureSpan">replay.</span>debug
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">replay.debug.</span>color</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replay.debug.</span>inspectOpts</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">replay.debug.</span>namespace</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.logger">module replay.logger</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.logger.logger">
+            function <span class="apidocSignatureSpan">replay.</span>logger
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.matcher">module replay.matcher</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.matcher.matcher">
+            function <span class="apidocSignatureSpan">replay.</span>matcher
+            <span class="apidocSignatureSpan">(request, response)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.pass_through">module replay.pass_through</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.pass_through.pass_through">
+            function <span class="apidocSignatureSpan">replay.</span>pass_through
+            <span class="apidocSignatureSpan">(passThroughFunction)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.proxy">module replay.proxy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.proxy.proxy">
+            function <span class="apidocSignatureSpan">replay.</span>proxy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replay.recorder">module replay.recorder</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replay.recorder.recorder">
+            function <span class="apidocSignatureSpan">replay.</span>recorder
+            <span class="apidocSignatureSpan">(settings)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay" id="apidoc.module.replay">module replay</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay._events.error" id="apidoc.element.replay._events.error">
+        function <span class="apidocSignatureSpan">replay.</span>_events.error
+        <span class="apidocSignatureSpan">(error)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_events.error = function (error) {
+  debug(`Replay: ${ error.message || error }`);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.chain.first" id="apidoc.element.replay.chain.first">
+        function <span class="apidocSignatureSpan">replay.</span>chain.first
+        <span class="apidocSignatureSpan">(request, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function layer(request, callback) {
+  handler(request, function (error, response) {
+    if (error || response) callback(error, response);else if (layer.next) layer.next(request, callback);else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.chain.last" id="apidoc.element.replay.chain.last">
+        function <span class="apidocSignatureSpan">replay.</span>chain.last
+        <span class="apidocSignatureSpan">(request, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function layer(request, callback) {
+  handler(request, function (error, response) {
+    if (error || response) callback(error, response);else if (layer.next) layer.next(request, callback);else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.debug" id="apidoc.element.replay.debug">
+        function <span class="apidocSignatureSpan">replay.</span>debug
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function debug() {
+  // disabled?
+  if (!debug.enabled) return;
+
+  var self = debug;
+
+  // set `diff` timestamp
+  var curr = +new Date();
+  var ms = curr - (prevTime || curr);
+  self.diff = ms;
+  self.prev = prevTime;
+  self.curr = curr;
+  prevTime = curr;
+
+  // turn the `arguments` into a proper Array
+  var args = new Array(arguments.length);
+  for (var i = 0; i &#x3c; args.length; i++) {
+    args[i] = arguments[i];
+  }
+
+  args[0] = exports.coerce(args[0]);
+
+  if (&#x27;string&#x27; !== typeof args[0]) {
+    // anything else let&#x27;s inspect with %O
+    args.unshift(&#x27;%O&#x27;);
+  }
+
+  // apply any `formatters` transformations
+  var index = 0;
+  args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+    // if we encounter an escaped % then don&#x27;t increase the array index
+    if (match === &#x27;%%&#x27;) return match;
+    index++;
+    var formatter = exports.formatters[format];
+    if (&#x27;function&#x27; === typeof formatter) {
+      var val = args[index];
+      match = formatter.call(self, val);
+
+      // now we need to remove `args[index]` since it&#x27;s inlined in the `format`
+      args.splice(index, 1);
+      index--;
+    }
+    return match;
+  });
+
+  // apply env-specific formatting (colors, etc.)
+  exports.formatArgs.call(self, args);
+
+  var logFn = debug.log || exports.log || console.log.bind(console);
+  logFn.apply(self, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.logger" id="apidoc.element.replay.logger">
+        function <span class="apidocSignatureSpan">replay.</span>logger
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function logger() {
+  return function (request, callback) {
+    debug(`Requesting ${ request.method } ${ URL.format(request.url) }`);
+    request.on(&#x27;response&#x27;, function (response) {
+      debug(`Received ${ response.statusCode } ${ URL.format(request.url) }`);
+    });
+    request.on(&#x27;error&#x27;, function (error) {
+      debug(`Error ${ error }`);
+    });
+    callback();
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.matcher" id="apidoc.element.replay.matcher">
+        function <span class="apidocSignatureSpan">replay.</span>matcher
+        <span class="apidocSignatureSpan">(request, response)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class Matcher {
+
+  constructor(request, response) {
+    // Map requests to object properties.  We do this for quick matching.
+    assert(request.url || request.regexp, &#x27;I need at least a URL to match request to response&#x27;);
+    if (request.regexp) {
+      this.hostname = request.hostname;
+      this.regexp = request.regexp;
+    } else {
+      const url = URL.parse(request.url);
+      this.hostname = url.hostname;
+      this.port = url.port;
+      this.path = url.path;
+    }
+
+    this.method = request.method &#x26;&#x26; request.method.toUpperCase() || &#x27;GET&#x27;;
+    this.headers = {};
+    if (request.headers) for (let name in request.headers) {
+      let value = request.headers[name];
+      this.headers[name.toLowerCase()] = value;
+    }
+    this.body = request.body;
+
+    // Create a normalized response object that we return.
+    this.response = {
+      version: response.version || &#x27;1.1&#x27;,
+      statusCode: response.statusCode &#x26;&#x26; parseInt(response.statusCode, 10) || 200,
+      statusMessage: response.statusMessage || &#x27;&#x27;,
+      headers: {},
+      body: response.body ? response.body.slice(0) : [],
+      trailers: {}
+    };
+
+    // Copy over header to response, downcase header names.
+    if (response.headers) {
+      const headers = this.response.headers;
+      for (let name in response.headers) {
+        let value = response.headers[name];
+        headers[name.toLowerCase()] = value;
+      }
+    }
+    // Copy over trailers to response, downcase trailers names.
+    if (response.trailers) {
+      const trailers = this.response.trailers;
+      for (let name in response.trailers) {
+        let value = response.trailers[name];
+        trailers[name.toLowerCase()] = value;
+      }
+    }
+  }
+
+  // Quick and effective matching.
+  match(request) {
+    const url = request.url;
+    const method = request.method;
+    const headers = request.headers;
+    const body = request.body;
+
+    if (this.hostname &#x26;&#x26; this.hostname !== url.hostname) return false;
+    if (this.regexp) {
+      if (!this.regexp.test(url.path)) return false;
+    } else {
+      if (this.port &#x26;&#x26; this.port !== url.port) return false;
+      if (this.path &#x26;&#x26; this.path !== url.path) return false;
+    }
+    if (this.method !== method) return false;
+
+    for (let name in this.headers) {
+      if (this.headers[name] !== headers[name]) return false;
+    }
+    if (body) {
+      let data = &#x27;&#x27;;
+      for (let chunks of body) data += chunks[0];
+      data = jsStringEscape(data);
+      if (this.body &#x26;&#x26; this.body !== data) return false;
+    }
+    return true;
+  }
+
+  // Returns new matcher function based on the supplied mapping.
+  //
+  // Mapping can contain `request` and `response` object.  As shortcut, mapping can specify `path` and `method` (optional)
+  // directly, and also any of the response properties.
+  static fromMapping(host, mapping) {
+    assert(!!mapping.path ^ !!mapping.request, &#x27;Mapping must specify path or request object&#x27;);
+
+    let matchingRequest;
+    if (mapping.path) matchingRequest = {
+      url: URL.resolve(`http://${ host }/`, mapping.path),
+      method: mapping.method
+    };else if (mapping.request.url instanceof RegExp) matchingRequest = {
+      host: host,
+      regexp: mapping.request.url,
+      method: mapping.request.method,
+      headers: mapping.request.headers,
+      body: mapping.request.body
+    };else matchingRequest = {
+      url: URL.resolve(`http://${ host }`, mapping.request.url),
+      method: mapping.request.method,
+      headers: mapping.request.headers,
+      body: mapping.request.body
+    };
+
+    const matcher = new Matcher(matchingRequest, mapping.response || {});
+    return function (request) {
+      if (matcher.match(request)) return matcher.response;
+    };
+  }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.pass_through" id="apidoc.element.replay.pass_through">
+        function <span class="apidocSignatureSpan">replay.</span>pass_through
+        <span class="apidocSignatureSpan">(passThroughFunction)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function passThrough(passThroughFunction) {
+  if (arguments.length === 0) passThroughFunction = () =&#x3e; true;else if (typeof passThrough === &#x27;string&#x27;) {
+    const hostname = passThroughFunction;
+    passThroughFunction = request =&#x3e; request.hostname === hostname;
+  } else if (typeof passThroughFunction !== &#x27;function&#x27;) {
+    const truthy = !!passThroughFunction;
+    passThroughFunction = () =&#x3e; truthy;
+  }
+
+  return function (request, callback) {
+    if (passThroughFunction(request)) {
+      const options = {
+        protocol: request.url.protocol,
+        hostname: request.url.hostname,
+        port: request.url.port,
+        path: request.url.path,
+        method: request.method,
+        headers: request.headers,
+        agent: request.agent,
+        auth: request.auth
+      };
+
+      const http = new ClientRequest(options);
+      if (request.trailers) http.addTrailers(request.trailers);
+      http.on(&#x27;error&#x27;, callback);
+      http.on(&#x27;response&#x27;, function (response) {
+        const captured = {
+          version: response.httpVersion,
+          statusCode: response.statusCode,
+          statusMessage: response.statusMessage,
+          headers: response.headers,
+          rawHeaders: response.rawHeaders,
+          body: []
+        };
+        response.on(&#x27;data&#x27;, function (chunk, encoding) {
+          captured.body.push([chunk, encoding]);
+        });
+        response.on(&#x27;end&#x27;, function () {
+          captured.trailers = response.trailers;
+          captured.rawTrailers = response.rawTrailers;
+          callback(null, captured);
+        });
+      });
+
+      if (request.body) for (let part of request.body) http.write(part[0], part[1]);
+      http.end();
+    } else callback();
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.proxy" id="apidoc.element.replay.proxy">
+        function <span class="apidocSignatureSpan">replay.</span>proxy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class ProxyRequest extends HTTP.IncomingMessage {
+
+  constructor() {
+    let options = arguments.length &#x3c;= 0 || arguments[0] === undefined ? {} : arguments[0];
+    let proxy = arguments[1];
+
+    super();
+    this.proxy = proxy;
+    this.method = (options.method || &#x27;GET&#x27;).toUpperCase();
+    const protocol = options.protocol || options._defaultAgent &#x26;&#x26; options._defaultAgent.protocol || &#x27;http:&#x27;;
+
+    var _split = (options.host || options.hostname).split(&#x27;:&#x27;);
+
+    var _split2 = _slicedToArray(_split, 2);
+
+    const host = _split2[0];
+    const port = _split2[1];
+
+    const realPort = options.port || port || (protocol === &#x27;https:&#x27; ? 443 : 80);
+    this.url = URL.parse(`${ protocol }//${ host || &#x27;localhost&#x27; }:${ realPort }${ options.path || &#x27;/&#x27; }`, true);
+    this.auth = options.auth;
+    this.agent = options.agent || (protocol === &#x27;https:&#x27; ? HTTPS.globalAgent : HTTP.globalAgent);
+    this.headers = {};
+    if (options.headers) for (let name in options.headers) {
+      let value = options.headers[name];
+      if (value != null) this.headers[name.toLowerCase()] = value.toString();
+    }
+  }
+
+  flushHeaders() {}
+
+  setHeader(name, value) {
+    assert(!this.ended, &#x27;Already called end&#x27;);
+    assert(!this.body, &#x27;Already wrote body parts&#x27;);
+    this.headers[name.toLowerCase()] = value;
+  }
+
+  getHeader(name) {
+    return this.headers[name.toLowerCase()];
+  }
+
+  removeHeader(name) {
+    assert(!this.ended, &#x27;Already called end&#x27;);
+    assert(!this.body, &#x27;Already wrote body parts&#x27;);
+    delete this.headers[name.toLowerCase()];
+  }
+
+  addTrailers(trailers) {
+    this.trailers = trailers;
+  }
+
+  setTimeout(timeout, callback) {
+    if (callback) setImmediate(callback);
+  }
+
+  setNoDelay() /*nodelay = true*/{}
+
+  setSocketKeepAlive() /*enable = false, initial*/{}
+
+  write(chunk, encoding, callback) {
+    assert(!this.ended, &#x27;Already called end&#x27;);
+    this.body = this.body || [];
+    this.body.push([chunk, encoding]);
+    if (callback) setImmediate(callback);
+  }
+
+  end(data, encoding, callback) {
+    assert(!this.ended, &#x27;Already called end&#x27;);
+
+    if (typeof data === &#x27;function&#x27;) {
+      ;
+      callback = data;
+      data = null;
+    } else if (typeof encoding === &#x27;function&#x27;) {
+      ;
+
+      callback = encoding;
+      encoding = null;
+    }if (data) {
+      this.body = this.body || [];
+      this.body.push([data, encoding]);
+    }
+    this.ended = true;
+
+    if (callback) setImmediate(callback);
+
+    this.proxy(this, (error, captured) =&#x3e; {
+      // We&#x27;re not asynchronous, but clients expect us to callback later on
+      setImmediate(() =&#x3e; {
+        if (error) this.emit(&#x27;error&#x27;, error);else if (captured) {
+          const response = new ProxyResponse(captured);
+          this.emit(&#x27;response&#x27;, response);
+          response.resume();
+        } else {
+          const error = new Error(`${ this.method } ${ URL.format(this.url) } refused: not recording and no network access`);
+          error.code = &#x27;ECONNREFUSED&#x27;;
+          error.errno = &#x27;ECONNREFUSED&#x27;;
+          this.emit(&#x27;error&#x27;, error);
+        }
+      });
+    });
+  }
+
+  flush() {}
+
+  abort() {}
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.body = this.body || [];
+  this.body.push([data, encoding]);
+}
+this.ended = true;
+
+if (callback) setImmediate(callback);
+
+this.<span class="apidocCodeKeywordSpan">proxy</span>(this, (error, captured) =&#x3e; {
+  // We&#x27;re not asynchronous, but clients expect us to callback later on
+  setImmediate(() =&#x3e; {
+    if (error) this.emit(&#x27;error&#x27;, error);else if (captured) {
+      const response = new ProxyResponse(captured);
+      this.emit(&#x27;response&#x27;, response);
+      response.resume();
+    } else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.recorder" id="apidoc.element.replay.recorder">
+        function <span class="apidocSignatureSpan">replay.</span>recorder
+        <span class="apidocSignatureSpan">(settings)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function recorded(settings) {
+  const catalog = settings.catalog;
+
+  const capture = passThrough(true);
+
+  return function (request, callback) {
+    let host = request.url.hostname;
+    if (request.url.port &#x26;&#x26; request.url.port !== &#x27;80&#x27;) host = `${ host }:${ request.url.port }`;
+
+    // Look for a matching response and replay it.
+    try {
+      const matchers = catalog.find(host);
+      if (matchers) for (let matcher of matchers) {
+        let response = matcher(request);
+        if (response) {
+          callback(null, response);
+          return;
+        }
+      }
+    } catch (error) {
+      error.code = &#x27;CORRUPT FIXTURE&#x27;;
+      error.syscall = &#x27;connect&#x27;;
+      callback(error);
+      return;
+    }
+
+    // Do not record this host.
+    if (settings.isDropped(request.url.hostname)) {
+      const refused = new Error(&#x27;Error: connect ECONNREFUSED&#x27;);
+      refused.code = refused.errno = &#x27;ECONNREFUSED&#x27;;
+      refused.syscall = &#x27;connect&#x27;;
+      callback(refused);
+      return;
+    }
+
+    // In recording mode capture the response and store it.
+    if (settings.mode === &#x27;record&#x27;) {
+      capture(request, function (error, response) {
+        if (error) callback(error);else catalog.save(host, request, response, function (saveError) {
+          callback(saveError, response);
+        });
+      });
+      return;
+    }
+
+    // Not in recording mode, pass control to the next proxy.
+    callback();
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay._events" id="apidoc.module.replay._events">module replay._events</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay._events.error" id="apidoc.element.replay._events.error">
+        function <span class="apidocSignatureSpan">replay._events.</span>error
+        <span class="apidocSignatureSpan">(error)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (error) {
+  debug(`Replay: ${ error.message || error }`);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay._events.error" id="apidoc.module.replay._events.error">module replay._events.error</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay._events.error.error" id="apidoc.element.replay._events.error.error">
+        function <span class="apidocSignatureSpan">replay._events.</span>error
+        <span class="apidocSignatureSpan">(error)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (error) {
+  debug(`Replay: ${ error.message || error }`);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.catalog" id="apidoc.module.replay.catalog">module replay.catalog</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.catalog.catalog" id="apidoc.element.replay.catalog.catalog">
+        function <span class="apidocSignatureSpan">replay.</span>catalog
+        <span class="apidocSignatureSpan">(settings)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class Catalog {
+
+  constructor(settings) {
+    this.settings = settings;
+    // We use this to cache host/host:port mapped to array of matchers.
+    this.matchers = {};
+    this._basedir = Path.resolve(&#x27;fixtures&#x27;);
+  }
+
+  getFixturesDir() {
+    return this._basedir;
+  }
+
+  setFixturesDir(dir) {
+    this._basedir = Path.resolve(dir);
+    this.matchers = {};
+  }
+
+  find(host) {
+    // Return result from cache.
+    const matchers = this.matchers[host];
+    if (matchers) return matchers;
+
+    // Start by looking for directory and loading each of the files.
+    // Look for host-port (windows friendly) or host:port (legacy)
+    let pathname = `${ this.getFixturesDir() }/${ host.replace(&#x27;:&#x27;, &#x27;-&#x27;) }`;
+    if (!File.existsSync(pathname)) pathname = `${ this.getFixturesDir() }/${ host }`;
+    if (!File.existsSync(pathname)) return null;
+
+    const newMatchers = this.matchers[host] || [];
+    this.matchers[host] = newMatchers;
+
+    const stat = File.statSync(pathname);
+    if (stat.isDirectory()) {
+      const files = File.readdirSync(pathname);
+      for (let file of files) {
+        let mapping = this._read(`${ pathname }/${ file }`);
+        newMatchers.push(Matcher.fromMapping(host, mapping));
+      }
+    } else {
+      const mapping = this._read(pathname);
+      newMatchers.push(Matcher.fromMapping(host, mapping));
+    }
+
+    return newMatchers;
+  }
+
+  save(host, request, response, callback) {
+    const matcher = Matcher.fromMapping(host, { request: request, response: response });
+    const matchers = this.matchers[host] || [];
+    matchers.push(matcher);
+    const requestHeaders = this.settings.headers;
+
+    const uid = `${ Date.now() }${ Math.floor(Math.random() * 100000) }`;
+    const tmpfile = `${ this.getFixturesDir() }/node-replay.${ uid }`;
+    const pathname = `${ this.getFixturesDir() }/${ host.replace(&#x27;:&#x27;, &#x27;-&#x27;) }`;
+
+    debug(`Creating ${ pathname }`);
+    try {
+      mkpathSync(pathname);
+    } catch (error) {
+      setImmediate(function () {
+        callback(error);
+      });
+      return;
+    }
+
+    const filename = `${ pathname }/${ uid }`;
+    try {
+      const file = File.createWriteStream(tmpfile, { encoding: &#x27;utf-8&#x27; });
+      file.write(`${ request.method.toUpperCase() } ${ request.url.path || &#x27;/&#x27; }\n`);
+      writeHeaders(file, request.headers, requestHeaders);
+      if (request.body) {
+        let body = &#x27;&#x27;;
+        for (let chunks of request.body) body += chunks[0];
+        writeHeaders(file, { body: jsStringEscape(body) });
+      }
+      file.write(&#x27;\n&#x27;);
+      // Response part
+      file.write(`HTTP/${ response.version || &#x27;1.1&#x27; } ${ response.statusCode || 200 } ${ response.statusMessage }\n`);
+      writeHeaders(file, response.headers);
+      file.write(&#x27;\n&#x27;);
+      for (let part of response.body) file.write(part[0], part[1]);
+      file.end(function () {
+        File.rename(tmpfile, filename, callback);
+      });
+    } catch (error) {
+      callback(error);
+    }
+  }
+
+  _read(filename) {
+    var _readAndInitialParseF = readAndInitialParseFile(filename);
+
+    var _readAndInitialParseF2 = _slicedToArray(_readAndInitialParseF, 3);
+
+    const request = _readAndInitialParseF2[0];
+    const response = _readAndInitialParseF2[1];
+    const part = _readAndInitialParseF2[2];
+
+    const body = [[part, undefined]];
+    return {
+      request: parseRequest(filename, request, this.settings.headers),
+      response: parseResponse(filename, response, body)
+    };
+  }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.chain" id="apidoc.module.replay.chain">module replay.chain</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.chain.first" id="apidoc.element.replay.chain.first">
+        function <span class="apidocSignatureSpan">replay.chain.</span>first
+        <span class="apidocSignatureSpan">(request, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function layer(request, callback) {
+  handler(request, function (error, response) {
+    if (error || response) callback(error, response);else if (layer.next) layer.next(request, callback);else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.chain.last" id="apidoc.element.replay.chain.last">
+        function <span class="apidocSignatureSpan">replay.chain.</span>last
+        <span class="apidocSignatureSpan">(request, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function layer(request, callback) {
+  handler(request, function (error, response) {
+    if (error || response) callback(error, response);else if (layer.next) layer.next(request, callback);else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.chain.first" id="apidoc.module.replay.chain.first">module replay.chain.first</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.chain.first.first" id="apidoc.element.replay.chain.first.first">
+        function <span class="apidocSignatureSpan">replay.chain.</span>first
+        <span class="apidocSignatureSpan">(request, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function layer(request, callback) {
+  handler(request, function (error, response) {
+    if (error || response) callback(error, response);else if (layer.next) layer.next(request, callback);else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.chain.first.next" id="apidoc.element.replay.chain.first.next">
+        function <span class="apidocSignatureSpan">replay.chain.first.</span>next
+        <span class="apidocSignatureSpan">(request, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function layer(request, callback) {
+  handler(request, function (error, response) {
+    if (error || response) callback(error, response);else if (layer.next) layer.next(request, callback);else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+
+
+
+&#x27;use strict&#x27;;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined
+; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.<span class="apidocCodeKeywordSpan">next</span>()).done); _n =
+true) { _arr.push(_s.value); if (i &#x26;&#x26; _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try
+ { if (!_n &#x26;&#x26; _i[&#x22;return&#x22;]) _i[&#x22;return&#x22;](); } finally { if (_d) throw _e; } } return _arr; } return
+ function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr
+, i); } else { throw new TypeError(&#x22;Invalid attempt to destructure non-iterable instance&#x22;); } }; }();
+
+function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
+
+const assert = require(&#x27;assert&#x27;);
+const debug = require(&#x27;./debug&#x27;);
+const File = require(&#x27;fs&#x27;);
+const Path = require(&#x27;path&#x27;);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.chain.last" id="apidoc.module.replay.chain.last">module replay.chain.last</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.chain.last.last" id="apidoc.element.replay.chain.last.last">
+        function <span class="apidocSignatureSpan">replay.chain.</span>last
+        <span class="apidocSignatureSpan">(request, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function layer(request, callback) {
+  handler(request, function (error, response) {
+    if (error || response) callback(error, response);else if (layer.next) layer.next(request, callback);else callback();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.debug" id="apidoc.module.replay.debug">module replay.debug</a></h1>
+
+
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.replay.debug.debug" id="apidoc.element.replay.debug.debug">
+        function <span class="apidocSignatureSpan">replay.</span>debug
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function debug() {
+  // disabled?
+  if (!debug.enabled) return;
+
+  var self = debug;
+
+  // set `diff` timestamp
+  var curr = +new Date();
+  var ms = curr - (prevTime || curr);
+  self.diff = ms;
+  self.prev = prevTime;
+  self.curr = curr;
+  prevTime = curr;
+
+  // turn the `arguments` into a proper Array
+  var args = new Array(arguments.length);
+  for (var i = 0; i &#x3c; args.length; i++) {
+    args[i] = arguments[i];
+  }
+
+  args[0] = exports.coerce(args[0]);
+
+  if (&#x27;string&#x27; !== typeof args[0]) {
+    // anything else let&#x27;s inspect with %O
+    args.unshift(&#x27;%O&#x27;);
+  }
+
+  // apply any `formatters` transformations
+  var index = 0;
+  args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+    // if we encounter an escaped % then don&#x27;t increase the array index
+    if (match === &#x27;%%&#x27;) return match;
+    index++;
+    var formatter = exports.formatters[format];
+    if (&#x27;function&#x27; === typeof formatter) {
+      var val = args[index];
+      match = formatter.call(self, val);
+
+      // now we need to remove `args[index]` since it&#x27;s inlined in the `format`
+      args.splice(index, 1);
+      index--;
+    }
+    return match;
+  });
+
+  // apply env-specific formatting (colors, etc.)
+  exports.formatArgs.call(self, args);
+
+  var logFn = debug.log || exports.log || console.log.bind(console);
+  logFn.apply(self, args);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.logger" id="apidoc.module.replay.logger">module replay.logger</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.logger.logger" id="apidoc.element.replay.logger.logger">
+        function <span class="apidocSignatureSpan">replay.</span>logger
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function logger() {
+  return function (request, callback) {
+    debug(`Requesting ${ request.method } ${ URL.format(request.url) }`);
+    request.on(&#x27;response&#x27;, function (response) {
+      debug(`Received ${ response.statusCode } ${ URL.format(request.url) }`);
+    });
+    request.on(&#x27;error&#x27;, function (error) {
+      debug(`Error ${ error }`);
+    });
+    callback();
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.matcher" id="apidoc.module.replay.matcher">module replay.matcher</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.matcher.matcher" id="apidoc.element.replay.matcher.matcher">
+        function <span class="apidocSignatureSpan">replay.</span>matcher
+        <span class="apidocSignatureSpan">(request, response)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class Matcher {
+
+  constructor(request, response) {
+    // Map requests to object properties.  We do this for quick matching.
+    assert(request.url || request.regexp, &#x27;I need at least a URL to match request to response&#x27;);
+    if (request.regexp) {
+      this.hostname = request.hostname;
+      this.regexp = request.regexp;
+    } else {
+      const url = URL.parse(request.url);
+      this.hostname = url.hostname;
+      this.port = url.port;
+      this.path = url.path;
+    }
+
+    this.method = request.method &#x26;&#x26; request.method.toUpperCase() || &#x27;GET&#x27;;
+    this.headers = {};
+    if (request.headers) for (let name in request.headers) {
+      let value = request.headers[name];
+      this.headers[name.toLowerCase()] = value;
+    }
+    this.body = request.body;
+
+    // Create a normalized response object that we return.
+    this.response = {
+      version: response.version || &#x27;1.1&#x27;,
+      statusCode: response.statusCode &#x26;&#x26; parseInt(response.statusCode, 10) || 200,
+      statusMessage: response.statusMessage || &#x27;&#x27;,
+      headers: {},
+      body: response.body ? response.body.slice(0) : [],
+      trailers: {}
+    };
+
+    // Copy over header to response, downcase header names.
+    if (response.headers) {
+      const headers = this.response.headers;
+      for (let name in response.headers) {
+        let value = response.headers[name];
+        headers[name.toLowerCase()] = value;
+      }
+    }
+    // Copy over trailers to response, downcase trailers names.
+    if (response.trailers) {
+      const trailers = this.response.trailers;
+      for (let name in response.trailers) {
+        let value = response.trailers[name];
+        trailers[name.toLowerCase()] = value;
+      }
+    }
+  }
+
+  // Quick and effective matching.
+  match(request) {
+    const url = request.url;
+    const method = request.method;
+    const headers = request.headers;
+    const body = request.body;
+
+    if (this.hostname &#x26;&#x26; this.hostname !== url.hostname) return false;
+    if (this.regexp) {
+      if (!this.regexp.test(url.path)) return false;
+    } else {
+      if (this.port &#x26;&#x26; this.port !== url.port) return false;
+      if (this.path &#x26;&#x26; this.path !== url.path) return false;
+    }
+    if (this.method !== method) return false;
+
+    for (let name in this.headers) {
+      if (this.headers[name] !== headers[name]) return false;
+    }
+    if (body) {
+      let data = &#x27;&#x27;;
+      for (let chunks of body) data += chunks[0];
+      data = jsStringEscape(data);
+      if (this.body &#x26;&#x26; this.body !== data) return false;
+    }
+    return true;
+  }
+
+  // Returns new matcher function based on the supplied mapping.
+  //
+  // Mapping can contain `request` and `response` object.  As shortcut, mapping can specify `path` and `method` (optional)
+  // directly, and also any of the response properties.
+  static fromMapping(host, mapping) {
+    assert(!!mapping.path ^ !!mapping.request, &#x27;Mapping must specify path or request object&#x27;);
+
+    let matchingRequest;
+    if (mapping.path) matchingRequest = {
+      url: URL.resolve(`http://${ host }/`, mapping.path),
+      method: mapping.method
+    };else if (mapping.request.url instanceof RegExp) matchingRequest = {
+      host: host,
+      regexp: mapping.request.url,
+      method: mapping.request.method,
+      headers: mapping.request.headers,
+      body: mapping.request.body
+    };else matchingRequest = {
+      url: URL.resolve(`http://${ host }`, mapping.request.url),
+      method: mapping.request.method,
+      headers: mapping.request.headers,
+      body: mapping.request.body
+    };
+
+    const matcher = new Matcher(matchingRequest, mapping.response || {});
+    return function (request) {
+      if (matcher.match(request)) return matcher.response;
+    };
+  }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.pass_through" id="apidoc.module.replay.pass_through">module replay.pass_through</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.pass_through.pass_through" id="apidoc.element.replay.pass_through.pass_through">
+        function <span class="apidocSignatureSpan">replay.</span>pass_through
+        <span class="apidocSignatureSpan">(passThroughFunction)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function passThrough(passThroughFunction) {
+  if (arguments.length === 0) passThroughFunction = () =&#x3e; true;else if (typeof passThrough === &#x27;string&#x27;) {
+    const hostname = passThroughFunction;
+    passThroughFunction = request =&#x3e; request.hostname === hostname;
+  } else if (typeof passThroughFunction !== &#x27;function&#x27;) {
+    const truthy = !!passThroughFunction;
+    passThroughFunction = () =&#x3e; truthy;
+  }
+
+  return function (request, callback) {
+    if (passThroughFunction(request)) {
+      const options = {
+        protocol: request.url.protocol,
+        hostname: request.url.hostname,
+        port: request.url.port,
+        path: request.url.path,
+        method: request.method,
+        headers: request.headers,
+        agent: request.agent,
+        auth: request.auth
+      };
+
+      const http = new ClientRequest(options);
+      if (request.trailers) http.addTrailers(request.trailers);
+      http.on(&#x27;error&#x27;, callback);
+      http.on(&#x27;response&#x27;, function (response) {
+        const captured = {
+          version: response.httpVersion,
+          statusCode: response.statusCode,
+          statusMessage: response.statusMessage,
+          headers: response.headers,
+          rawHeaders: response.rawHeaders,
+          body: []
+        };
+        response.on(&#x27;data&#x27;, function (chunk, encoding) {
+          captured.body.push([chunk, encoding]);
+        });
+        response.on(&#x27;end&#x27;, function () {
+          captured.trailers = response.trailers;
+          captured.rawTrailers = response.rawTrailers;
+          callback(null, captured);
+        });
+      });
+
+      if (request.body) for (let part of request.body) http.write(part[0], part[1]);
+      http.end();
+    } else callback();
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.proxy" id="apidoc.module.replay.proxy">module replay.proxy</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.proxy.proxy" id="apidoc.element.replay.proxy.proxy">
+        function <span class="apidocSignatureSpan">replay.</span>proxy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class ProxyRequest extends HTTP.IncomingMessage {
+
+  constructor() {
+    let options = arguments.length &#x3c;= 0 || arguments[0] === undefined ? {} : arguments[0];
+    let proxy = arguments[1];
+
+    super();
+    this.proxy = proxy;
+    this.method = (options.method || &#x27;GET&#x27;).toUpperCase();
+    const protocol = options.protocol || options._defaultAgent &#x26;&#x26; options._defaultAgent.protocol || &#x27;http:&#x27;;
+
+    var _split = (options.host || options.hostname).split(&#x27;:&#x27;);
+
+    var _split2 = _slicedToArray(_split, 2);
+
+    const host = _split2[0];
+    const port = _split2[1];
+
+    const realPort = options.port || port || (protocol === &#x27;https:&#x27; ? 443 : 80);
+    this.url = URL.parse(`${ protocol }//${ host || &#x27;localhost&#x27; }:${ realPort }${ options.path || &#x27;/&#x27; }`, true);
+    this.auth = options.auth;
+    this.agent = options.agent || (protocol === &#x27;https:&#x27; ? HTTPS.globalAgent : HTTP.globalAgent);
+    this.headers = {};
+    if (options.headers) for (let name in options.headers) {
+      let value = options.headers[name];
+      if (value != null) this.headers[name.toLowerCase()] = value.toString();
+    }
+  }
+
+  flushHeaders() {}
+
+  setHeader(name, value) {
+    assert(!this.ended, &#x27;Already called end&#x27;);
+    assert(!this.body, &#x27;Already wrote body parts&#x27;);
+    this.headers[name.toLowerCase()] = value;
+  }
+
+  getHeader(name) {
+    return this.headers[name.toLowerCase()];
+  }
+
+  removeHeader(name) {
+    assert(!this.ended, &#x27;Already called end&#x27;);
+    assert(!this.body, &#x27;Already wrote body parts&#x27;);
+    delete this.headers[name.toLowerCase()];
+  }
+
+  addTrailers(trailers) {
+    this.trailers = trailers;
+  }
+
+  setTimeout(timeout, callback) {
+    if (callback) setImmediate(callback);
+  }
+
+  setNoDelay() /*nodelay = true*/{}
+
+  setSocketKeepAlive() /*enable = false, initial*/{}
+
+  write(chunk, encoding, callback) {
+    assert(!this.ended, &#x27;Already called end&#x27;);
+    this.body = this.body || [];
+    this.body.push([chunk, encoding]);
+    if (callback) setImmediate(callback);
+  }
+
+  end(data, encoding, callback) {
+    assert(!this.ended, &#x27;Already called end&#x27;);
+
+    if (typeof data === &#x27;function&#x27;) {
+      ;
+      callback = data;
+      data = null;
+    } else if (typeof encoding === &#x27;function&#x27;) {
+      ;
+
+      callback = encoding;
+      encoding = null;
+    }if (data) {
+      this.body = this.body || [];
+      this.body.push([data, encoding]);
+    }
+    this.ended = true;
+
+    if (callback) setImmediate(callback);
+
+    this.proxy(this, (error, captured) =&#x3e; {
+      // We&#x27;re not asynchronous, but clients expect us to callback later on
+      setImmediate(() =&#x3e; {
+        if (error) this.emit(&#x27;error&#x27;, error);else if (captured) {
+          const response = new ProxyResponse(captured);
+          this.emit(&#x27;response&#x27;, response);
+          response.resume();
+        } else {
+          const error = new Error(`${ this.method } ${ URL.format(this.url) } refused: not recording and no network access`);
+          error.code = &#x27;ECONNREFUSED&#x27;;
+          error.errno = &#x27;ECONNREFUSED&#x27;;
+          this.emit(&#x27;error&#x27;, error);
+        }
+      });
+    });
+  }
+
+  flush() {}
+
+  abort() {}
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.body = this.body || [];
+  this.body.push([data, encoding]);
+}
+this.ended = true;
+
+if (callback) setImmediate(callback);
+
+this.<span class="apidocCodeKeywordSpan">proxy</span>(this, (error, captured) =&#x3e; {
+  // We&#x27;re not asynchronous, but clients expect us to callback later on
+  setImmediate(() =&#x3e; {
+    if (error) this.emit(&#x27;error&#x27;, error);else if (captured) {
+      const response = new ProxyResponse(captured);
+      this.emit(&#x27;response&#x27;, response);
+      response.resume();
+    } else {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replay.recorder" id="apidoc.module.replay.recorder">module replay.recorder</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replay.recorder.recorder" id="apidoc.element.replay.recorder.recorder">
+        function <span class="apidocSignatureSpan">replay.</span>recorder
+        <span class="apidocSignatureSpan">(settings)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function recorded(settings) {
+  const catalog = settings.catalog;
+
+  const capture = passThrough(true);
+
+  return function (request, callback) {
+    let host = request.url.hostname;
+    if (request.url.port &#x26;&#x26; request.url.port !== &#x27;80&#x27;) host = `${ host }:${ request.url.port }`;
+
+    // Look for a matching response and replay it.
+    try {
+      const matchers = catalog.find(host);
+      if (matchers) for (let matcher of matchers) {
+        let response = matcher(request);
+        if (response) {
+          callback(null, response);
+          return;
+        }
+      }
+    } catch (error) {
+      error.code = &#x27;CORRUPT FIXTURE&#x27;;
+      error.syscall = &#x27;connect&#x27;;
+      callback(error);
+      return;
+    }
+
+    // Do not record this host.
+    if (settings.isDropped(request.url.hostname)) {
+      const refused = new Error(&#x27;Error: connect ECONNREFUSED&#x27;);
+      refused.code = refused.errno = &#x27;ECONNREFUSED&#x27;;
+      refused.syscall = &#x27;connect&#x27;;
+      callback(refused);
+      return;
+    }
+
+    // In recording mode capture the response and store it.
+    if (settings.mode === &#x27;record&#x27;) {
+      capture(request, function (error, response) {
+        if (error) callback(error);else catalog.save(host, request, response, function (saveError) {
+          callback(saveError, response);
+        });
+      });
+      return;
+    }
+
+    // Not in recording mode, pass control to the next proxy.
+    callback();
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
