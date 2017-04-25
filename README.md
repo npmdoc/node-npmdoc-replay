@@ -1,4 +1,7 @@
-# api documentation for  [replay (v2.1.2)](https://github.com/assaf/node-replay#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-replay.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-replay) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-replay.svg)](https://travis-ci.org/npmdoc/node-npmdoc-replay)
+# npmdoc-replay
+
+#### basic api documentation for  [replay (v2.1.2)](https://github.com/assaf/node-replay#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-replay.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-replay) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-replay.svg)](https://travis-ci.org/npmdoc/node-npmdoc-replay)
+
 #### When API testing slows you down: record and replay HTTP responses like a boss
 
 [![NPM](https://nodei.co/npm/replay.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/replay)
@@ -99,7 +102,8 @@
         "prepublish": "gulp build",
         "test": "mocha"
     },
-    "version": "2.1.2"
+    "version": "2.1.2",
+    "bin": {}
 }
 ```
 
